@@ -25,33 +25,20 @@ get_tmux_option() {
 }
 
 pane_navigation_bindings() {
-  tmux bind-key -n h if-shell "$is_vim" "send-keys C-h" "select-pane -L"
   tmux bind-key -n C-h if-shell "$is_vim" "send-keys C-h" "select-pane -L"
-  tmux bind-key -n j if-shell "$is_vim" "send-keys C-j" "select-pane -D"
   tmux bind-key -n C-j if-shell "$is_vim" "send-keys C-j" "select-pane -D"
-  tmux bind-key -n k if-shell "$is_vim" "send-keys C-k" "select-pane -U"
   tmux bind-key -n C-k if-shell "$is_vim" "send-keys C-k" "select-pane -U"
-  tmux bind-key -n l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
   tmux bind-key -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R" 
 
   tmux if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
     "bind-key -n '\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-  tmux if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-  tmux if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-    "bind-key -n '\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
   tmux if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
     "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
 
-  tmux bind-key -T copy-mode-vi h select-pane -L
   tmux bind-key -T copy-mode-vi C-h select-pane -L
-  tmux bind-key -T copy-mode-vi j select-pane -D
   tmux bind-key -T copy-mode-vi C-j select-pane -D
-  tmux bind-key -T copy-mode-vi k select-pane -U
   tmux bind-key -T copy-mode-vi C-k select-pane -U
-  tmux bind-key -T copy-mode-vi l select-pane -R
   tmux bind-key -T copy-mode-vi C-l select-pane -R
-  tmux bind-key -T copy-mode-vi \\ select-pane -l
   tmux bind-key -T copy-mode-vi C-\\ select-pane -l
 }
 
