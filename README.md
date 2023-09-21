@@ -1,10 +1,10 @@
-Vim Tmux Navigator
+Vim Tmux Pain Control
 ==================
 
-This plugin is a repackaging of [Mislav Marohnić's](https://mislav.net/) tmux-navigator
-configuration described in [this gist][]. When combined with a set of tmux
-key bindings, the plugin will allow you to navigate seamlessly between
-vim and tmux splits using a consistent set of hotkeys.
+This plugin is a combination of [Vim Tmux Navigator](https://github.com/christoomey/vim-tmux-navigator) 
+and [Tmux Pain Control](https://github.com/tmux-plugins/tmux-pain-control). This plugin
+allows you to navigate seamlessly between vim and tmux splits using standard,
+less painful, pane navigation bindings.
 
 **NOTE**: This requires tmux v1.8 or higher.
 
@@ -23,8 +23,45 @@ Vim panes and tmux splits seamlessly.
 **Note** - you don't need to use your tmux `prefix` key sequence before using
 the mappings.
 
-If you want to use alternate key mappings, see the [configuration section
-below][].
+Additional "standard" tmux bindings are included.
+
+**Resizing panes**
+
+- `prefix + shift + h`<br/>
+  resize current pane 5 cells to the left
+- `prefix + shift + j`<br/>
+  resize 5 cells in the down direction
+- `prefix + shift + k`<br/>
+  resize 5 cells in the up direction
+- `prefix + shift + l`<br/>
+  resize 5 cells to the right
+
+These mappings are `repeatable`.
+
+<br/><br/>
+
+**Splitting panes**
+
+- `prefix + |`<br/>
+  split the current pane into two, left and right.
+- `prefix + -`<br/>
+  split the current pane into two, top and bottom.
+- `prefix + \`<br/>
+  split current pane full width into two, left and right.
+- `prefix + _`<br/>
+  split current pane full height into two, top and bottom.
+
+Newly created pane always has the same path as the original pane.
+
+<br/><br/><br/><br/><br/>
+
+**Swapping windows**
+
+- `prefix + <` - moves current window one position to the left
+- `prefix + >` - moves current window one position to the right
+
+The amount of cells to resize can be configured with `@pane_resize` option. You may also configure alternate key mappings. See
+[configuration section](#configuration) for the details.
 
 Installation
 ------------
